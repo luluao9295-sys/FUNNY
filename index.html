@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0b10" />
+  <title>FUNNY — Le coin bonne humeur</title>
+  <meta name="description" content="FUNNY, une expérience légère et fun avec des blagues à découvrir en un clic." />
+  <style>
+    :root{--bg:#09090d;--card:#14141c;--text:#f7f7fb;--muted:#aaaaba;--accent:#ff4fd8;--accent2:#7c5cff;--line:#29293a}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 15% 10%,rgba(255,79,216,.18),transparent 32%),radial-gradient(circle at 85% 30%,rgba(124,92,255,.18),transparent 35%),var(--bg);color:var(--text);min-height:100vh}
+    .wrap{width:min(1080px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:20;background:rgba(9,9,13,.72);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.07)}
+    nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-size:1.45rem;font-weight:900;letter-spacing:.12em}
+    .logo span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .navlink{color:var(--muted);text-decoration:none;font-weight:700}
+    main{padding:72px 0 48px}
+    .hero{display:grid;place-items:center;text-align:center;min-height:68vh}
+    .tag{display:inline-flex;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);color:#d7d7e4;font-size:.9rem}
+    h1{font-size:clamp(3.3rem,12vw,7.5rem);line-height:.92;margin:24px 0 18px;letter-spacing:-.06em}
+    h1 span{background:linear-gradient(135deg,#fff 15%,#ff73df 52%,#866cff 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{max-width:680px;color:var(--muted);font-size:clamp(1rem,3vw,1.25rem);line-height:1.7;margin:0 auto 32px}
+    .joke-card{width:min(700px,100%);margin:34px auto 0;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.035));border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+    .emoji{font-size:3rem;display:block;margin-bottom:12px}
+    #joke{font-size:clamp(1.2rem,4vw,1.7rem);font-weight:800;line-height:1.45;min-height:84px;display:grid;place-items:center}
+    button{appearance:none;border:0;border-radius:999px;padding:15px 22px;font-size:1rem;font-weight:900;color:#fff;background:linear-gradient(90deg,var(--accent),var(--accent2));box-shadow:0 10px 35px rgba(124,92,255,.28);cursor:pointer;transition:.2s transform,.2s filter}
+    button:active{transform:scale(.97)}
+    button:hover{filter:brightness(1.08)}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:24px 0 80px}
+    .feature{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px}
+    .feature b{display:block;margin-bottom:8px;font-size:1.05rem}
+    .feature p{margin:0;color:var(--muted);line-height:1.55}
+    footer{border-top:1px solid var(--line);padding:28px 0 42px;text-align:center;color:#77778b}
+    @media(max-width:720px){nav{height:62px}.features{grid-template-columns:1fr}main{padding-top:34px}.joke-card{padding:22px;border-radius:22px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <div class="logo">FUN<span>NY</span></div>
+        <a class="navlink" href="#fun">Découvrir</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="fun">
+      <div>
+        <div class="tag">😂 100% bonne humeur</div>
+        <h1>Bienvenue sur <span>FUNNY</span></h1>
+        <p class="lead">Un petit coin du web pensé pour décrocher un sourire en quelques secondes. Appuie sur le bouton et découvre une nouvelle blague.</p>
+
+        <div class="joke-card">
+          <span class="emoji" id="emoji">😄</span>
+          <div id="joke" aria-live="polite">Pourquoi les plongeurs plongent-ils toujours en arrière ? Parce que sinon ils tombent dans le bateau.</div>
+          <button id="nextJoke" type="button">Une autre 😎</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <article class="feature"><b>⚡ Rapide</b><p>Une interface simple, fluide et adaptée au mobile.</p></article>
+      <article class="feature"><b>🎲 Aléatoire</b><p>Chaque clic affiche une nouvelle blague.</p></article>
+      <article class="feature"><b>📱 Mobile first</b><p>Optimisé pour être agréable directement sur iPhone.</p></article>
+    </section>
+  </main>
+
+  <footer><div class="wrap">FUNNY © <span id="year"></span> — Souris, ça fait du bien.</div></footer>
+
+  <script>
+    const jokes = [
+      "Pourquoi les plongeurs plongent-ils toujours en arrière ? Parce que sinon ils tombent dans le bateau.",
+      "Quel est le comble pour un électricien ? De ne pas être au courant.",
+      "Pourquoi les maths sont tristes ? Parce qu’elles ont trop de problèmes.",
+      "Que dit une imprimante dans l’eau ? J’ai papier !",
+      "Pourquoi les squelettes ne se battent jamais ? Ils n’ont pas le cran.",
+      "Quel fruit déteste les poissons ? La pêche.",
+      "Pourquoi le calendrier est stressé ? Parce que ses jours sont comptés.",
+      "Que fait une fraise sur un cheval ? Tagada tagada."
+    ];
+    const emojis = ["😂","🤣","😄","😎","🤭","🥳","😜","🙃"];
+    let last = -1;
+    const joke = document.getElementById('joke');
+    const emoji = document.getElementById('emoji');
+    document.getElementById('nextJoke').addEventListener('click', () => {
+      let i;
+      do { i = Math.floor(Math.random() * jokes.length); } while (i === last && jokes.length > 1);
+      last = i;
+      joke.textContent = jokes[i];
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
