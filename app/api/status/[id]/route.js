@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { extractVideoUrl, isValidRequestId } from '../../../../../lib/funny.mjs';
+import { extractVideoUrl, isValidRequestId } from '../../../../lib/funny.mjs';
 
 function getCredentials() {
   if (process.env.HF_CREDENTIALS) return process.env.HF_CREDENTIALS;
